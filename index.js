@@ -6,7 +6,10 @@ const cors = require('cors')
 app.use(cors())
 // console.log(mongoose)
 
-mongoose.connect(process.env.MONGODB_URI).then(res=>console.log('MongoDB is connected'))
+mongoose.connect(process.env.MONGODB_URI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }).then(res=>console.log('MongoDB is connected'))
 console.log(process.env.MONGODB_URI)
 const collegeStudentSchema = new mongoose.Schema({
 name:String,
