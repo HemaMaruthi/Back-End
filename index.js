@@ -6,10 +6,17 @@ const cors = require('cors')
 app.use(cors())
 // console.log(mongoose)
 
-mongoose.connect(process.env.MONGODB_URI,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(res=>console.log('MongoDB is connected'))
+
+//
+
+// mongoose.connect("mongodb://localhost:27017/myDataBase",
+mongoose.connect( "mongodb+srv://smaruthimahi111:rylrsFBfi9UI5aXo@cluster0.mukp7.mongodb.net/myDatabase?retryWrites=true&w=majority",
+
+// {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   }
+  ).then(res=>console.log('MongoDB is connected'))
 console.log(process.env.MONGODB_URI)
 const collegeStudentSchema = new mongoose.Schema({
 name:String,
@@ -40,7 +47,7 @@ app.post('/college-student/post',(req,res)=>{
       newStudent.save()
         res.json(newStudent)
 })
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 console.log( process.env.PORT )
 app.listen(PORT,()=>{
     console.log(`Server is starting on http://localhost:${PORT}`)
